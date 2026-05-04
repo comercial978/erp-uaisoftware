@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UAI Software | ERP para Empresas que Querem Crescer</title>
+  <meta name="description" content="UAI Software é a unidade autorizada Cybersul em Minas Gerais. ERP completo com implantação, treinamento e suporte. Transforme sua gestão." />
+  <link rel="canonical" href="https://erp.uaisoftware.com.br" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0A1628;
+      --blue:    #1547A0;
+      --blue-mid:#1D5FCC;
+      --sky:     #3A8EF6;
+      --accent:  #00C2FF;
+      --white:   #FFFFFF;
+      --light:   #F0F4FB;
+      --muted:   #8CA3C4;
+      --dark-card: #0E1E38;
+      --border:  rgba(255,255,255,0.08);
+      --glow:    rgba(58,142,246,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1,h2,h3,h4 { font-family: 'Sora', sans-serif; line-height: 1.2; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      padding: 18px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: all .3s;
+    }
+    nav.scrolled { padding: 12px 5%; background: rgba(10,22,40,0.97); }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 14px; color: white;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo-text { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: white; }
+    .nav-logo-text span { color: var(--accent); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: white; }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      color: white !important;
+      padding: 10px 22px; border-radius: 8px;
+      font-weight: 600 !important; font-size: 14px !important;
+      transition: opacity .2s, transform .2s !important;
+    }
+    .nav-cta:hover { opacity: .9; transform: translateY(-1px); color: white !important; }
+
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px; transition: all .3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(21,71,160,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 80% 80%, rgba(0,194,255,0.12) 0%, transparent 60%),
+        var(--navy);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: .07;
+      background-image:
+        linear-gradient(var(--sky) 1px, transparent 1px),
+        linear-gradient(90deg, var(--sky) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 20%, transparent 80%);
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(58,142,246,0.12);
+      border: 1px solid rgba(58,142,246,0.3);
+      padding: 6px 16px; border-radius: 99px;
+      font-size: 13px; color: var(--sky); font-weight: 500;
+      margin-bottom: 28px; position: relative; z-index: 1;
+      animation: fadeDown .6s ease forwards;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .6; transform: scale(1.3); }
+    }
+
+    #hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      max-width: 860px;
+      position: relative; z-index: 1;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    #hero h1 .highlight {
+      background: linear-gradient(90deg, var(--sky), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    #hero p {
+      margin-top: 24px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.7;
+      position: relative; z-index: 1;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      margin-top: 40px;
+      position: relative; z-index: 1;
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-mid), var(--sky));
+      color: white; text-decoration: none;
+      padding: 16px 36px; border-radius: 10px;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px;
+      box-shadow: 0 8px 32px rgba(58,142,246,0.35);
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(58,142,246,0.5); }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: white; text-decoration: none;
+      padding: 16px 36px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-family: 'Sora', sans-serif; font-weight: 600; font-size: 15px;
+      transition: background .2s, transform .2s;
+      white-space: nowrap;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;
+      margin-top: 72px;
+      position: relative; z-index: 1;
+      animation: fadeUp .7s .4s ease both;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.2rem; font-weight: 800;
+      background: linear-gradient(135deg, white, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 100px 5%; }
+
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--sky); font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .section-tag::before {
+      content: ''; display: block;
+      width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--accent));
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; max-width: 640px;
+    }
+    .section-title .hl {
+      background: linear-gradient(90deg, var(--sky), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .section-sub {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 580px; margin-top: 14px; line-height: 1.7;
+    }
+
+    .container { max-width: 1160px; margin: 0 auto; }
+
+    /* ─── PROBLEMS ─── */
+    #problems { background: var(--navy); }
+
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+
+    .problem-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      transition: border-color .3s, transform .3s;
+      position: relative; overflow: hidden;
+    }
+    .problem-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .problem-card:hover { border-color: rgba(58,142,246,0.3); transform: translateY(-4px); }
+    .problem-card:hover::before { opacity: 1; }
+
+    .problem-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(21,71,160,0.2);
+      border: 1px solid rgba(21,71,160,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+
+    .problem-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .problem-card p { color: var(--muted); font-size: .92rem; line-height: 1.65; }
+
+    /* ─── SOLUTION ─── */
+    #solution {
+      background: linear-gradient(180deg, #0C1A30 0%, var(--navy) 100%);
+    }
+
+    .solution-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 64px;
+    }
+
+    .modules-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+
+    .module-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px;
+      transition: all .3s; cursor: default;
+    }
+    .module-card:hover {
+      border-color: rgba(0,194,255,0.35);
+      background: rgba(14,30,56,0.9);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .module-card .mod-icon { font-size: 26px; margin-bottom: 12px; }
+    .module-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .module-card p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+    .solution-features { display: flex; flex-direction: column; gap: 20px; }
+
+    .feat-item {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .feat-check {
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(0,194,255,0.1);
+      border: 1px solid rgba(0,194,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .feat-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .feat-item p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--navy); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 36px 28px;
+      text-align: center;
+      transition: all .35s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(58,142,246,0.08) 0%, transparent 70%);
+      opacity: 0; transition: opacity .35s;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(58,142,246,0.3); }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-icon {
+      width: 72px; height: 72px; border-radius: 18px; margin: 0 auto 24px;
+      background: linear-gradient(135deg, rgba(21,71,160,0.4), rgba(58,142,246,0.2));
+      border: 1px solid rgba(58,142,246,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── INTELLIGENCE ─── */
+    #intelligence {
+      background: linear-gradient(180deg, var(--navy) 0%, #0C1A30 50%, var(--navy) 100%);
+    }
+
+    .intel-layout {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 72px; align-items: center; margin-top: 64px;
+    }
+
+    .dashboard-mockup {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 24px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(58,142,246,0.1);
+      position: relative;
+    }
+    .dashboard-mockup::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 21px;
+      background: linear-gradient(135deg, rgba(58,142,246,0.15), transparent 60%);
+      z-index: -1;
+    }
+
+    .dash-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .dash-title { font-family: 'Sora', sans-serif; font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .dash-dot { display: flex; gap: 6px; }
+    .dash-dot span { width: 8px; height: 8px; border-radius: 50%; }
+    .dash-dot span:nth-child(1) { background: #FF5F56; }
+    .dash-dot span:nth-child(2) { background: #FFBD2D; }
+    .dash-dot span:nth-child(3) { background: #27C93F; }
+
+    .dash-kpis {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
+    }
+    .kpi-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); border-radius: 12px; padding: 16px 14px;
+    }
+    .kpi-label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 6px; }
+    .kpi-val { font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 800; }
+    .kpi-val.green { color: #27C93F; }
+    .kpi-val.blue { color: var(--accent); }
+    .kpi-val.orange { color: #FFB347; }
+    .kpi-delta { font-size: .72rem; color: #27C93F; margin-top: 4px; }
+    .kpi-delta.neg { color: #FF6B6B; }
+
+    .dash-chart {
+      height: 100px; display: flex; align-items: flex-end;
+      gap: 6px; margin-bottom: 20px;
+    }
+    .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .bar {
+      width: 100%; border-radius: 4px 4px 0 0;
+      background: linear-gradient(180deg, var(--sky), var(--blue));
+      transition: opacity .3s;
+    }
+    .bar:hover { opacity: .8; }
+    .bar-label { font-size: .65rem; color: var(--muted); }
+
+    .dash-list { display: flex; flex-direction: column; gap: 10px; }
+    .dash-item {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
+    }
+    .dash-item-name { font-size: .8rem; font-weight: 600; }
+    .dash-item-val { font-size: .8rem; color: var(--accent); font-weight: 700; }
+    .dash-item-bar-wrap { flex: 1; margin: 0 12px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; }
+    .dash-item-bar { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--accent)); }
+
+    .intel-points { display: flex; flex-direction: column; gap: 28px; }
+    .intel-point { display: flex; gap: 18px; }
+    .intel-num {
+      font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--sky), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      min-width: 44px; line-height: 1;
+    }
+    .intel-point h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .intel-point p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── SEGMENTS ─── */
+    #segments { background: var(--navy); }
+
+    .segments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+
+    .segment-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 28px 22px; text-align: center;
+      transition: all .3s;
+    }
+    .segment-card:hover {
+      border-color: rgba(0,194,255,0.3);
+      transform: translateY(-4px);
+      background: rgba(14,30,56,0.95);
+    }
+    .segment-emoji { font-size: 36px; margin-bottom: 14px; }
+    .segment-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .segment-card p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ─── CASES ─── */
+    #cases {
+      background: linear-gradient(180deg, #0C1A30 0%, var(--navy) 100%);
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+
+    .case-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border); border-radius: 18px;
+      overflow: hidden; transition: all .35s;
+    }
+    .case-card:hover { border-color: rgba(58,142,246,0.3); transform: translateY(-5px); box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+
+    .case-header {
+      padding: 28px 28px 0;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .case-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(21,71,160,0.5), rgba(58,142,246,0.25));
+      border: 1px solid rgba(58,142,246,0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .case-header h3 { font-size: 1rem; font-weight: 700; }
+    .case-header span { font-size: .78rem; color: var(--muted); display: block; margin-top: 3px; }
+
+    .case-body { padding: 22px 28px; }
+    .case-challenge {
+      font-size: .82rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6;
+    }
+    .case-results {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .case-result {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .85rem;
+    }
+    .case-result::before {
+      content: '✓';
+      width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0;
+      background: rgba(39,201,63,0.15); border: 1px solid rgba(39,201,63,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; color: #27C93F;
+    }
+
+    /* ─── CTA SECTION ─── */
+    #cta {
+      padding: 120px 5%;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(21,71,160,0.5) 0%, transparent 70%),
+        var(--navy);
+    }
+    .cta-content { position: relative; z-index: 1; }
+    #cta h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; max-width: 700px; margin: 0 auto 24px;
+    }
+    #cta p {
+      color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 44px; line-height: 1.7;
+    }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-xl {
+      padding: 20px 44px;
+      font-size: 1rem;
+      border-radius: 12px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060E1C;
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand p { font-size: .88rem; color: var(--muted); margin-top: 16px; line-height: 1.7; max-width: 280px; }
+
+    .footer-col h4 { font-family: 'Sora', sans-serif; font-size: .9rem; font-weight: 700; margin-bottom: 18px; color: white; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--muted); text-decoration: none; font-size: .88rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--sky); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: .82rem; color: var(--muted); }
+    .footer-bottom a { color: var(--sky); text-decoration: none; }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(37,211,102,0.6); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .solution-layout { grid-template-columns: 1fr; gap: 48px; }
+      .intel-layout { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: flex-start;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10,22,40,0.98);
+        padding: 20px 5%; gap: 18px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-hamburger { display: flex; }
+      .hero-stats { gap: 28px; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 72px 5%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .dash-kpis { grid-template-columns: repeat(3,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">UAI</div>
+    <span class="nav-logo-text">UAI <span>Software</span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#problems">O Problema</a></li>
+    <li><a href="#solution">Solução ERP</a></li>
+    <li><a href="#services">Serviços</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="https://wa.me/5534988977879?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ERP" target="_blank" class="nav-cta">Falar com Especialista</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Representante exclusivo Cybersul em Minas Gerais
+  </div>
+
+  <h1>
+    Sua empresa merece uma gestão<br>
+    <span class="highlight">mais inteligente e lucrativa</span>
+  </h1>
+
+  <p>
+    Com o ERP certo, você para de apagar incêndios e começa a tomar decisões estratégicas. Controle total do financeiro, estoque, vendas e fiscal — tudo integrado, em tempo real.
+  </p>
+
+  <div class="hero-btns">
+    <a href="https://wa.me/5534988977879?text=Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20gratuita%20do%20ERP" target="_blank" class="btn-primary">
+      Agendar Demonstração Gratuita →
+    </a>
+    <a href="#solution" class="btn-secondary">Conhecer o Sistema</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">20+</div>
+      <div class="hero-stat-label">Anos de experiência em T.I.</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">200+</div>
+      <div class="hero-stat-label">Empresas atendidas</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Suporte em português</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">MG</div>
+      <div class="hero-stat-label">Unidade oficial Cybersul</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROBLEMS ─── -->
+<section id="problems">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">O Diagnóstico</span>
+      <h2 class="section-title">Reconhece algum desses <span class="hl">problemas no seu dia a dia?</span></h2>
+      <p class="section-sub">A maioria das empresas cresce com processos que funcionam no "improviso". Isso funciona — até o momento em que deixa de funcionar.</p>
+    </div>
+
+    <div class="problems-grid reveal">
+      <div class="problem-card">
+        <div class="problem-icon">💸</div>
+        <h3>Caixa sem controle real</h3>
+        <p>Você sabe quanto tem na conta, mas não sabe de onde vem e para onde vai cada real. Decisões financeiras no escuro custam caro.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📋</div>
+        <h3>Tudo feito na mão</h3>
+        <p>Planilhas que desatualizam, anotações em cadernos, e-mails perdidos. Processos manuais travam o crescimento e geram erros desnecessários.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔀</div>
+        <h3>Áreas que não conversam</h3>
+        <p>Vendas não sabe o que tem no estoque. Financeiro não sabe o que Vendas fechou. A falta de integração gera retrabalho e clientes insatisfeitos.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🎯</div>
+        <h3>Decisões no achismo</h3>
+        <p>Sem relatórios confiáveis, você decide com base em intuição. Às vezes funciona — mas crescer de forma consistente exige dados, não feeling.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📦</div>
+        <h3>Estoque desconhecido</h3>
+        <p>Produtos em falta que você não sabia, excesso de itens parados, compras sem critério. O estoque desorganizado engole margem silenciosamente.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⚖️</div>
+        <h3>Obrigações fiscais no limite</h3>
+        <p>NF-e emitida errada, SINTEGRA fora do prazo, apuração de impostos manual. O fisco não aceita desculpas — e as multas chegam sem avisar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTION ─── -->
+<section id="solution">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">A Solução</span>
+      <h2 class="section-title">Um ERP que organiza, integra e <span class="hl">faz sua empresa crescer</span></h2>
+      <p class="section-sub">O Sistema Cybersul — implantado e suportado pela UAI Software — é a plataforma de gestão empresarial com melhor custo-benefício do Brasil.</p>
+    </div>
+
+    <div class="solution-layout reveal">
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="mod-icon">💰</div>
+          <h4>Financeiro</h4>
+          <p>Contas a pagar e receber, fluxo de caixa, conciliação bancária e DRE em tempo real.</p>
+        </div>
+        <div class="module-card">
+          <div class="mod-icon">📦</div>
+          <h4>Estoque</h4>
+          <p>Controle de entrada e saída, inventário, rastreabilidade e alertas automáticos de reposição.</p>
+        </div>
+        <div class="module-card">
+          <div class="mod-icon">🛒</div>
+          <h4>Vendas</h4>
+          <p>PDV, orçamentos, pedidos, comissões, histórico de clientes e integração com NF-e.</p>
+        </div>
+        <div class="module-card">
+          <div class="mod-icon">📄</div>
+          <h4>Fiscal</h4>
+          <p>Emissão de NF-e, NFS-e, CT-e, SPED, SINTEGRA e obrigações acessórias automatizadas.</p>
+        </div>
+        <div class="module-card">
+          <div class="mod-icon">🔧</div>
+          <h4>Ordens de Serviço</h4>
+          <p>Controle completo de O.S., histórico técnico, peças utilizadas e faturamento integrado.</p>
+        </div>
+        <div class="module-card">
+          <div class="mod-icon">📊</div>
+          <h4>Relatórios Gerenciais</h4>
+          <p>Dashboards personalizados, indicadores de desempenho e relatórios para decisão estratégica.</p>
+        </div>
+      </div>
+
+      <div class="solution-features">
+        <div class="feat-item">
+          <div class="feat-check">🔗</div>
+          <div>
+            <h4>Integração total entre departamentos</h4>
+            <p>Vendas, estoque, financeiro e fiscal em sincronia permanente. Uma alteração em qualquer ponto reflete em todos os setores instantaneamente.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-check">⚙️</div>
+          <div>
+            <h4>Automação que elimina retrabalho</h4>
+            <p>Processos repetitivos viram rotinas automáticas. Sua equipe foca no que realmente importa: atender clientes e gerar resultados.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-check">📉</div>
+          <div>
+            <h4>Redução drástica de erros operacionais</h4>
+            <p>Digitação manual elimina — e junto com ela vão as divergências, os pedidos errados e as notas com problema.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-check">📈</div>
+          <div>
+            <h4>Escala conforme você cresce</h4>
+            <p>Do SOHO ao Enterprise, o sistema cresce com sua empresa. Abre uma filial? Contrata mais? A plataforma acompanha sem fricção.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Muito Além do Software</span>
+      <h2 class="section-title">Parceria completa do início <span class="hl">ao resultado</span></h2>
+      <p class="section-sub">Qualquer software é ferramenta. O que transforma empresas é a combinação de tecnologia + metodologia + pessoas certas ao seu lado.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">🗺️</div>
+        <h3>Implantação Personalizada</h3>
+        <p>Mapeamos seus processos antes de configurar qualquer coisa. O sistema é moldado para a realidade da sua empresa — não o contrário.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3>Treinamento Especializado</h3>
+        <p>Capacitamos sua equipe de forma prática e objetiva. Sem manuais confusos: treinamento focado nas rotinas reais do seu negócio.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
+        <h3>Suporte Técnico Contínuo</h3>
+        <p>Atendimento ágil por telefone, WhatsApp ou acesso remoto. Quando surge um problema, você tem alguém para resolver — não um ticket esquecido.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧭</div>
+        <h3>Consultoria de Processos</h3>
+        <p>Identificamos gargalos, reorganizamos fluxos e ajudamos a redesenhar como sua operação funciona para extrair o máximo do sistema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTELLIGENCE ─── -->
+<section id="intelligence">
+  <div class="container">
+    <div class="intel-layout">
+      <!-- Dashboard Mockup -->
+      <div class="dashboard-mockup reveal">
+        <div class="dash-header">
+          <span class="dash-title">Painel de Gestão</span>
+          <div class="dash-dot"><span></span><span></span><span></span></div>
+        </div>
+        <div class="dash-kpis">
+          <div class="kpi-box">
+            <div class="kpi-label">Faturamento</div>
+            <div class="kpi-val blue">R$284k</div>
+            <div class="kpi-delta">↑ 18% vs mês ant.</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-label">Margem Líq.</div>
+            <div class="kpi-val green">23,4%</div>
+            <div class="kpi-delta">↑ 2,1pp</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-label">Inadimpl.</div>
+            <div class="kpi-val orange">3,2%</div>
+            <div class="kpi-delta neg">↑ 0,4pp</div>
+          </div>
+        </div>
+        <div class="dash-chart">
+          <div class="bar-group"><div class="bar" style="height:52%"></div><span class="bar-label">Jan</span></div>
+          <div class="bar-group"><div class="bar" style="height:68%"></div><span class="bar-label">Fev</span></div>
+          <div class="bar-group"><div class="bar" style="height:58%"></div><span class="bar-label">Mar</span></div>
+          <div class="bar-group"><div class="bar" style="height:82%"></div><span class="bar-label">Abr</span></div>
+          <div class="bar-group"><div class="bar" style="height:73%"></div><span class="bar-label">Mai</span></div>
+          <div class="bar-group"><div class="bar" style="height:90%"></div><span class="bar-label">Jun</span></div>
+          <div class="bar-group"><div class="bar" style="height:78%"></div><span class="bar-label">Jul</span></div>
+        </div>
+        <div class="dash-list">
+          <div class="dash-item">
+            <span class="dash-item-name">Produto A</span>
+            <div class="dash-item-bar-wrap"><div class="dash-item-bar" style="width:82%"></div></div>
+            <span class="dash-item-val">R$94k</span>
+          </div>
+          <div class="dash-item">
+            <span class="dash-item-name">Produto B</span>
+            <div class="dash-item-bar-wrap"><div class="dash-item-bar" style="width:61%"></div></div>
+            <span class="dash-item-val">R$68k</span>
+          </div>
+          <div class="dash-item">
+            <span class="dash-item-name">Serviços</span>
+            <div class="dash-item-bar-wrap"><div class="dash-item-bar" style="width:45%"></div></div>
+            <span class="dash-item-val">R$52k</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="reveal">
+        <span class="section-tag">Inteligência de Negócio</span>
+        <h2 class="section-title" style="max-width: 100%;">Dados que viram <span class="hl">decisões certeiras</span></h2>
+        <p class="section-sub" style="margin-bottom: 40px;">A maioria dos sistemas apenas armazena dados. O Cybersul transforma esses dados em visibilidade estratégica para quem decide.</p>
+
+        <div class="intel-points">
+          <div class="intel-point">
+            <div class="intel-num">01</div>
+            <div>
+              <h4>Dashboards em tempo real</h4>
+              <p>Faturamento, margem, inadimplência e vendas por período — atualizados a cada transação, acessíveis de qualquer lugar.</p>
+            </div>
+          </div>
+          <div class="intel-point">
+            <div class="intel-num">02</div>
+            <div>
+              <h4>Indicadores que importam</h4>
+              <p>Configure os KPIs do seu negócio. Ticket médio, giro de estoque, custo por produto — você define o que medir.</p>
+            </div>
+          </div>
+          <div class="intel-point">
+            <div class="intel-num">03</div>
+            <div>
+              <h4>Relatórios para cada área</h4>
+              <p>Do gestor ao vendedor, cada usuário vê o que precisa para trabalhar melhor — sem excesso de informação, sem falta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SEGMENTS ─── -->
+<section id="segments">
+  <div class="container">
+    <div class="reveal" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+      <span class="section-tag">Segmentos Atendidos</span>
+      <h2 class="section-title">Solução adaptada para <span class="hl">cada tipo de negócio</span></h2>
+      <p class="section-sub">Independente do setor, o sistema se molda ao seu modelo de operação — não o contrário.</p>
+    </div>
+
+    <div class="segments-grid reveal">
+      <div class="segment-card">
+        <div class="segment-emoji">🏪</div>
+        <h3>Comércio Varejista</h3>
+        <p>PDV, controle de estoque, NF-e e gestão de clientes integrados para lojas físicas.</p>
+      </div>
+      <div class="segment-card">
+        <div class="segment-emoji">🏭</div>
+        <h3>Indústria</h3>
+        <p>Produção, custos, matéria-prima, pedidos e faturamento em um único sistema.</p>
+      </div>
+      <div class="segment-card">
+        <div class="segment-emoji">🔧</div>
+        <h3>Prestação de Serviços</h3>
+        <p>O.S., agendamento técnico, controle de comissões e faturamento de serviços.</p>
+      </div>
+      <div class="segment-card">
+        <div class="segment-emoji">🚛</div>
+        <h3>Transportadoras</h3>
+        <p>CT-e, integração de filiais, SINTEGRA e controle de plano de contas multi-empresa.</p>
+      </div>
+      <div class="segment-card">
+        <div class="segment-emoji">🤝</div>
+        <h3>Distribuição</h3>
+        <p>Gestão de pedidos, logística, estoque central e filiais com visibilidade unificada.</p>
+      </div>
+      <div class="segment-card">
+        <div class="segment-emoji">🏗️</div>
+        <h3>Construção e Engenharia</h3>
+        <p>Controle de obras, aquisições, custos por projeto e integração com fiscal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CASES ─── -->
+<section id="cases">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Cases Reais</span>
+      <h2 class="section-title">Empresas que <span class="hl">transformaram sua gestão</span></h2>
+      <p class="section-sub">Resultados reais de clientes da UAI Software — unidade oficial Cybersul em Minas Gerais.</p>
+    </div>
+
+    <div class="cases-grid reveal">
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-icon">🚛</div>
+          <div>
+            <h3>Comercial Transportes Indaiá</h3>
+            <span>Transportadora · Triângulo Mineiro</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="case-challenge">Desafio: integrar filiais, automatizar SINTEGRA, controlar plano de contas e emitir CT-e e NF-e de forma centralizada.</p>
+          <div class="case-results">
+            <div class="case-result">Departamentos 100% integrados e organizados</div>
+            <div class="case-result">Controle unificado de processos multi-filial</div>
+            <div class="case-result">Plano de contas otimizado para tomada de decisão</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-icon">⚙️</div>
+          <div>
+            <h3>Gauchinho Acessórios</h3>
+            <span>Peças para Veículos Pesados</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="case-challenge">Desafio: integrar assistência técnica aos processos comerciais e migrar dados de sistema legado para a nova plataforma.</p>
+          <div class="case-results">
+            <div class="case-result">Migração completa de dados sem perda</div>
+            <div class="case-result">NF-e e ECF configurados e homologados</div>
+            <div class="case-result">Vendas e serviços totalmente integrados</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-icon">🔩</div>
+          <div>
+            <h3>Linha Reta Serviços Mecânicos</h3>
+            <span>Serviços Automotivos e Peças</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="case-challenge">Desafio: integrar a assistência técnica, homologar ECF e NF-e e criar um sistema justo de comissões por ordem de serviço.</p>
+          <div class="case-results">
+            <div class="case-result">Maior produtividade na equipe técnica</div>
+            <div class="case-result">Comissões por O.S. calculadas automaticamente</div>
+            <div class="case-result">Integração total entre dados e operação</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-icon">🔋</div>
+          <div>
+            <h3>Triandiesel Bombas Injetoras</h3>
+            <span>Manutenção de Veículos Pesados</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="case-challenge">Desafio: criar um sistema específico para O.S. e NF-e/ECF em manutenção pesada, com estrutura para abertura de nova filial.</p>
+          <div class="case-results">
+            <div class="case-result">Gestão completa de O.S. implantada</div>
+            <div class="case-result">Banco de dados estruturado para crescimento</div>
+            <div class="case-result">Empresa preparada para expansão com nova filial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─── -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-content container reveal" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+    <span class="section-tag" style="justify-content: center;">Próximo Passo</span>
+    <h2>Pronto para parar de improvisar <span class="hl">e começar a crescer?</span></h2>
+    <p>Agende uma demonstração gratuita. Mostramos o sistema funcionando com os dados do seu próprio segmento — sem enrolação.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5534988977879?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20gratuita%20do%20ERP" target="_blank" class="btn-primary btn-xl">
+        💬 Falar com um Especialista
+      </a>
+      <a href="tel:+5534988977879" class="btn-secondary btn-xl">
+        📞 (34) 98897-7879
+      </a>
+    </div>
+    <p style="margin-top: 24px; font-size: .82rem; color: var(--muted);">
+      Sem compromisso. Demonstração 100% gratuita. Atendemos todo o Triângulo Mineiro e Brasil via web.
+    </p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom: 8px; display: inline-flex;">
+          <div class="nav-logo-icon">UAI</div>
+          <span class="nav-logo-text">UAI <span>Software</span></span>
+        </a>
+        <p>Representante exclusivo e autorizado Cybersul Softwares de Gestão em Minas Gerais. Especialistas em ERP, implantação e consultoria de processos desde 2004.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Solução</h4>
+        <ul>
+          <li><a href="#solution">Módulos do ERP</a></li>
+          <li><a href="#services">Implantação</a></li>
+          <li><a href="#services">Treinamento</a></li>
+          <li><a href="#services">Suporte</a></li>
+          <li><a href="#intelligence">Inteligência</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Segmentos</h4>
+        <ul>
+          <li><a href="#segments">Comércio</a></li>
+          <li><a href="#segments">Indústria</a></li>
+          <li><a href="#segments">Serviços</a></li>
+          <li><a href="#segments">Transporte</a></li>
+          <li><a href="#segments">Distribuição</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5534988977879" target="_blank">WhatsApp: (34) 98897-7879</a></li>
+          <li><a href="mailto:comercial@uaisoftware.com.br">comercial@uaisoftware.com.br</a></li>
+          <li><a href="https://www.uaisoftware.com.br" target="_blank">uaisoftware.com.br</a></li>
+          <li><a href="#cta">Agendar Demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 UAI Software LTDA. Todos os direitos reservados. CNPJ: UAI Software LTDA.</p>
+      <p>Parceiro oficial <a href="#">Cybersul Softwares de Gestão</a> · Minas Gerais</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp-float" href="https://wa.me/5534988977879?text=Ol%C3%A1!%20Vi%20o%20site%20do%20ERP%20e%20quero%20saber%20mais" target="_blank" title="Falar no WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Stagger children
+        Array.from(e.target.children).forEach((child, i) => {
+          child.style.transitionDelay = `${i * 0.08}s`;
+        });
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounters() {
+    document.querySelectorAll('.hero-stat-num').forEach(el => {
+      const text = el.textContent;
+      const num = parseInt(text);
+      if (!isNaN(num)) {
+        let start = 0;
+        const end = num;
+        const duration = 1800;
+        const step = Math.ceil(end / (duration / 16));
+        const timer = setInterval(() => {
+          start = Math.min(start + step, end);
+          el.textContent = text.replace(num, start);
+          if (start >= end) clearInterval(timer);
+        }, 16);
+      }
+    });
+  }
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { animateCounters(); heroObserver.disconnect(); }
+  }, { threshold: 0.5 });
+  heroObserver.observe(document.querySelector('.hero-stats'));
+</script>
+</body>
+</html>
