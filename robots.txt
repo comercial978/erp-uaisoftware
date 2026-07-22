@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://erp.uaisoftware.com.br/sitemap.xml
